@@ -121,7 +121,7 @@ func writeDataToFile(tree *Lsm, allData []node) {
 	datawriter.Flush()
 }
 
-func put(key keyType, val valueType, tree *Lsm) {
+func Put(key keyType, val valueType, tree *Lsm) {
 	if tree.nextEmtpy == tree.blockSize {
 		writeToDisk(tree)
 	}
@@ -133,7 +133,7 @@ func put(key keyType, val valueType, tree *Lsm) {
 
 }
 
-func get(key keyType, tree *Lsm) (*node, error) {
+func Get(key keyType, tree *Lsm) (*node, error) {
 	ni, _ := searchBuffer(key, tree)
 
 	if ni != nil {
@@ -149,7 +149,7 @@ func get(key keyType, tree *Lsm) (*node, error) {
 
 }
 
-func delete(key keyType, tree *Lsm) {
+func Delete(key keyType, tree *Lsm) {
 	ni, _ := searchBuffer(key, tree)
 
 	if ni != nil {
